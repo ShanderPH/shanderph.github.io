@@ -1,20 +1,31 @@
+.pratos {
+  background-color: #F4F5F7;
+  border-radius: 2rem;
+  padding: 10px;
+}
+
 .pratos ul {
     padding: 0;
     list-style: none;
     margin: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   
   .pratos li {
     margin: 0.5rem;
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: 2rem;
     display: flex;
     flex-direction: column;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     cursor: pointer;
     transition: background-color 0.3s;
+    height: 200px;
+  }
+
+  .pratos h2 {
+    padding-left: 50px;
   }
   
   .pratos li:hover {
