@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ceia de Natal</title>
+  
+  <!-- CSS Import -->
+  <link rel="stylesheet" href="./global.css">
+  <link rel="stylesheet" href="./plates.css">
+
+  <!-- Normalize CSS-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Roboto Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+  <header>
+    <h1>Ceia de Natal Familia Teixeira</h1>
+    <p>Escolha o prato que deseja levar para a ceia!</p>
+  </header>
+  <main>
+    <section class="pratos">
+      <h2>Pratos Disponíveis</h2>
+      <ul id="lista-pratos">
+        <li data-prato="Pavê">Pavê</li>
+        <li data-prato="Salpicão">Salpicão</li>
+        <li data-prato="Peru Assado">Peru Assado</li>
+        <li data-prato="Torta de Limão">Torta de Limão</li>
+        <li data-prato="Farofa">Farofa</li>
+        <li data-prato="Pavê">Pavê</li>
+        <li data-prato="Salpicão">Salpicão</li>
+        <li data-prato="Peru Assado">Peru Assado</li>
+        <li data-prato="Torta de Limão">Torta de Limão</li>
+        <li data-prato="Farofa">Farofa</li>
+      </ul>
+    </section>
+  
+    <section class="formulario">
+      <h2>Confirme sua Escolha</h2>
+      <form id="form-ceia">
+        <label for="nome">Seu Nome:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+        
+        <label for="prato">Prato Escolhido:</label>
+        <input type="text" id="prato" name="prato" readonly required>
+        
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  
+    <section class="confirmados">
+      <h2>Participantes Confirmados</h2>
+      <ul id="lista-participantes">
+        <!-- Aqui aparecerão os participantes dinamicamente -->
+      </ul>
+    </section>
+  </main>  
+  <footer>
+    <p class="ft_year">&copy; 2024 Ceia de Natal</p>
+  </footer>
+  <script src="scripts.js"></script>
+</body>
+</html>
