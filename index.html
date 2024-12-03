@@ -23,60 +23,75 @@
 
 
 </head>
+
 <body>
-  <header>
-    <p>Natal Teixeira</p>
-  </header>
-  <main>
+    <header>
+        <div class="title">
+            <p>Natal Teixeira</p>
+        </div>
+    </header>
+    <!------>
+    <!------>
+    <div class="contatos">
+        <a href="https://w.app/KoqjYL" target="_blank" rel="noopener">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1022px-WhatsApp.svg.png" alt="whatsapp" class="logow">
+        </a>
+        <a href="https://www.instagram.com/alle_teixeira17/" target="_blank" rel="noopener">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/600px-Instagram_logo_2022.svg.png" alt="instagram" class="logoi">
+        </a>
+    </div>
+    <!------>
+    <!------>
+    <div class="title-pratos">
+        <h2>Pratos disponíveis</h2>
+        <p>Selecione o prato que você levará para a nossa ceia de natal!</p>
+    </div>
+    <!------>
+    <!------>
     <section class="pratos">
-      <h2>Pratos Disponíveis:</h2>
-      <ul id="lista-pratos">
-        <li data-prato="Pavê">Pavê</li>
-        <li data-prato="Salpicão">Salpicão</li>
-        <li data-prato="Peru Assado">Peru Assado</li>
-        <li data-prato="Torta de Limão">Torta de Limão</li>
-        <li data-prato="Farofa">Farofa</li>
-        <li data-prato="Pavê">Pavê</li>
-        <li data-prato="Salpicão">Salpicão</li>
-        <li data-prato="Peru Assado">Peru Assado</li>
-        <li data-prato="Torta de Limão">Torta de Limão</li>
-        <li data-prato="Farofa">Farofa</li>
-        <li data-prato="Pavê">Pavê</li>
-        <li data-prato="Salpicão">Salpicão</li>
-        <li data-prato="Peru Assado">Peru Assado</li>
-        <li data-prato="Torta de Limão">Torta de Limão</li>
-        <li data-prato="Farofa">Farofa</li>
-        <li data-prato="Pavê">Pavê</li>
-        <li data-prato="Salpicão">Salpicão</li>
-        <li data-prato="Peru Assado">Peru Assado</li>
-        <li data-prato="Torta de Limão">Torta de Limão</li>
-        <li data-prato="Farofa">Farofa</li>
-      </ul>
+        <span class="grid">
+            <!------>
+            <div data-prato="Pavê" class="cardapio-card">
+                <figure class="thumb">
+                    <img src="https://panelaterapia.com/wp-content/uploads/2023/09/receita-pave-tradicional.jpg">
+                </figure>
+                <div class="inner">
+                    <h2 class="joke">Pavê</h2>
+                    <p>Ou pacumê?</p>
+                </div>
+            </div>
+            <div data-prato="Salpicão" class="cardapio-card">
+                <figure class="thumb">
+                    <img src="https://lirp.cdn-website.com/33406c6e/dms3rep/multi/opt/salpicao-bb826b0e-640w.jpg">
+                </figure>
+                <div class="inner">
+                    <h2>Salpicão</h2>
+                </div>
+            </div>
+            <div data-prato="Tropeiro" class="cardapio-card">
+                <figure class="thumb">
+                    <img src="https://receitadaboa.com.br/wp-content/uploads/2024/08/Feijao-tropeiro.jpg">
+                </figure>
+                <div class="inner">
+                    <h2>Feijão Tropeiro</h2>
+                </div>
+            </div>
+            <div data-prato="Chester" class="cardapio-card">
+                <figure class="thumb">
+                    <img src="https://static.itdg.com.br/images/640-440/fcb7bd2670d545d509754eba38b04c00/325663-original.jpg">
+                </figure>
+                <div class="inner">
+                    <h2>Chester Assado</h2>
+                </div>
+            </div>
+
+
+            <!------>
+            <!------>
+        </span>
     </section>
-  
-    <section class="formulario">
-      <h2>Confirme sua Escolha</h2>
-      <form id="form-ceia">
-        <label for="nome">Seu Nome:</label>
-        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
-        
-        <label for="prato">Prato Escolhido:</label>
-        <input type="text" id="prato" name="prato" readonly required>
-        
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-  
-    <section class="confirmados">
-      <h2>Participantes Confirmados</h2>
-      <ul id="lista-participantes">
-        <!-- Aqui aparecerão os participantes dinamicamente -->
-      </ul>
-    </section>
-  </main>  
-  <footer>
-    <p class="ft_year">&copy; 2024 Ceia de Natal</p>
-  </footer>
-  <script src="scripts.js"></script>
+
 </body>
-</html>
+<footer>
+
+</footer>
