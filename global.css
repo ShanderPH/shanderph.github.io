@@ -63,7 +63,7 @@ header p {
 }
 
 .title-pratos h2 {
-    font-family: "Roboto", sans-serif;
+    font-family: "Anton", sans-serif;
     color: #A70C17;
     font-size: 38px;
     font-style: normal;
@@ -122,6 +122,15 @@ header p {
 
 .inner p {
     margin-top: 0;
+}
+
+.title-deserves h2 {
+    font-family: "Anton", sans-serif;
+    color: #A70C17;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 400;
+    padding: 10px 0;
 }
 
 
