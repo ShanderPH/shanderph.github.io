@@ -51,7 +51,7 @@
     <!------>
     <!------>
     <section class="pratos">
-        <span class="grid">
+        <span class="grid" id="cardapio">
             <!------>
             <div data-prato="Lagarto" class="cardapio-card">
                 <figure class="thumb">
@@ -99,6 +99,16 @@
             <!------>
             
         </span>
+        <!--  -->
+        <!--  -->
+        <!-- Botão para Adicionar Pratos -->
+        <div class="novoPrato">
+            <input type="text" id="nomePrato" placeholder="Digite o nome do prato" />
+            <button id="adicionarPratoBtn" class="botao">Adicionar Prato</button>
+        </div>
+        <!--  -->
+        <!--  -->
+        <!--  -->
         <div id="detalhe-receita" style="display: none;">
             <h3 id="nome-prato"></h3>
             <p id="descricao-receita"></p>
@@ -110,8 +120,8 @@
     <div class="title-deserves">
         <h2>Sobremesas</h2>
     </div>
-    <section class="pratos">
-        <span class="grid">
+    <section class="sobremesas">
+        <span class="grid" id="cardapioS">
             <!------>
             <div data-prato="Pavê" class="cardapio-card">
                 <figure class="thumb">
@@ -160,8 +170,20 @@
             <!------>
             
         </span>
+        <!------>
+        <!------>
+        <div class="novoSobremesa">
+            <input type="text" id="deserveInput" placeholder="Digite nome da Sobremesa">
+            <button id="adicionarSobreBtn" class="botao">Adicionar Sobremesa</button>
+        </div>
+        <!------>
+        <!------>
 
     </section>
+
+    <div id="cardapio" class="cardapio-container">
+        <!-- As opções serão adicionadas aqui -->
+    </div>
 
 <!--  -->
 <!--  -->
@@ -172,6 +194,8 @@
     </a>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js"></script>
 <script src="./scripts.js"></script>
 
 </body>

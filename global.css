@@ -153,6 +153,44 @@ header p {
     padding: 10px 0;
 }
 
+.novoPrato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 15px;
+}
+
+.novoPrato button {
+    margin: 5px;
+}
+
+.novoSobremesa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 15px;
+}
+
+.novoSobremesa button {
+    margin: 5px;
+}
+
+.botao {
+    border: solid 1px #A70C17;
+    border-radius: 20px;
+    color: white;
+    background-color: #A70C17;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+    cursor: pointer;
+    font-family: "Anton", sans-serif;
+}
+
+.botao:hover {
+    background-color: #F8F9FA;
+    color: red;
+    transform: scale(1.05);
+}
+
 #detalhe-receita {
     position: fixed;
     top: 50%;
@@ -163,6 +201,12 @@ header p {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     z-index: 1000;
+}
+
+.cardapio-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 footer {
@@ -232,6 +276,25 @@ footer h3 {
 @media only screen and (max-width: 420px) {
     .grid {
         justify-content: space-evenly;
+    }
+  }
+
+  @media only screen and (min-width: 3000px) {
+    .grid {
+        justify-content: center; /* Alinha horizontalmente */
+        align-items: center;    /* Alinha verticalmente */
+    }
+  }
+
+  @media only screen and (min-width: 3000px) {
+    .title-pratos {
+        margin-left: 25%;    /* Alinha verticalmente */
+    }
+  }
+
+  @media only screen and (min-width: 3000px) {
+    .title-deserves {
+        margin-left: 25%;    /* Alinha verticalmente */
     }
   }
 
