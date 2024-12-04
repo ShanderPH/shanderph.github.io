@@ -153,6 +153,12 @@ header p {
     padding: 10px 0;
 }
 
+.title-deserves p {
+    font-family: "Roboto", sans-serif;
+    margin-top: 0;
+    color: #A70C17;
+}
+
 .novoPrato {
     display: flex;
     flex-direction: column;
@@ -245,6 +251,30 @@ footer h3 {
 
   @media only screen and (max-width: 575px) {
     .title-pratos h2 {
+        margin-top: 1%;
+        margin-left: 1%;
+        margin-bottom: 0;
+    }
+  }
+
+  @media only screen and (min-width: 576px) {
+    .title-deserves h2 {
+        margin-top: 1%;
+        margin-left: 1%;
+        margin-bottom: 0;
+    }
+  }
+
+
+@media only screen and (min-width: 576px) {
+    .title-deserves p {
+        font-size: 20px;
+        margin: 1%;
+    }
+  }
+
+  @media only screen and (max-width: 575px) {
+    .title-deserves h2 {
         margin-top: 1%;
         margin-left: 1%;
         margin-bottom: 0;
