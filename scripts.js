@@ -1,70 +1,27 @@
-// Importação das funções do Firebase
-import { initializeApp } from "firebase/app";
-import { ref, push, onValue } from "firebase/database";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://firebase.google.com/docs/web/learn-more#config-object
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  // ...
-  // The value of `databaseURL` depends on the location of the database
-  databaseURL: "https://family-christmas.firebaseio.com",
-  apiKey: "AIzaSyAnvSpOqkZ3hpkHzEweb5gj-fELySXvIqo",
-  authDomain: "ceia-de-natal-b95c5.firebaseapp.com",
-  projectId: "ceia-de-natal-b95c5",
-  storageBucket: "ceia-de-natal-b95c5.firebasestorage.app",
-  messagingSenderId: "498415554958",
-  appId: "1:498415554958:web:ab6081cf302f6f8bb014df",
-  measurementId: "G-K3M9D1P9MD"
+apiKey: "AIzaSyAnvSpOqkZ3hpkHzEweb5gj-fELySXvIqo",
+authDomain: "ceia-de-natal-b95c5.firebaseapp.com",
+projectId: "ceia-de-natal-b95c5",
+storageBucket: "ceia-de-natal-b95c5.firebasestorage.app",
+messagingSenderId: "498415554958",
+appId: "1:498415554958:web:ab6081cf302f6f8bb014df",
+measurementId: "G-K3M9D1P9MD",
+databaseURL: "https://ceia-de-natal-b95c5-default-rtdb.firebaseio.com/"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-
-// Initialize Realtime Database and get a reference to the service
 const db = getDatabase(app);
 
-
-// Função que adiciona novos pratos
-async function adicionarPrato(newPlate) {
-    const container = document.getElementById('cardapio');
-
-    // Criar novo prato no banco de dados Firebase
-    try {
-        const pratosRef = ref(db, "pratos");
-        const docRef = await push(pratosRef, {
-            name: newPlate
-        });
-        console.log("Prato adicionado com ID:", docRef.key);
-
-        const novoCard = `
-            <div data-prato="personalChoice" class="cardapio-card">
-                <figure class="thumb">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5Ne-qEvtVO9ZCPeKmXH85pBvwfwWDJRM-5g&s" alt="Opção Personalizada">
-                </figure>
-                <div class="inner">
-                    <h2>${newPlate}</h2>
-                </div>
-            </div>
-        `;
-        container.insertAdjacentHTML('beforeend', novoCard);
-    } catch (e) {
-        console.error("Erro ao adicionar prato:", e);
-    }
-}
-
-document.getElementById('adicionarPratoBtn').addEventListener('click', () => {
-    const input = document.getElementById('nomePrato');
-    const nomePrato = input.value.trim();
-
-    if (nomePrato) {
-        adicionarPrato(nomePrato); // Chama a função para adicionar o prato
-        input.value = ''; // Limpa o campo de entrada
-    } else {
-        alert('Por favor, insira o nome do prato.');
-    }
-});
-
+// Função que carrega os pratos do banco de dados
 async function carregarPratos() {
     const container = document.getElementById('cardapio');
 
@@ -94,6 +51,34 @@ async function carregarPratos() {
 
 document.addEventListener('DOMContentLoaded', () => {
     carregarPratos();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    carregarPratos();
+});
+
+async function adicionarPrato(newPlate) {
+    // Criar novo prato no banco de dados Firebase
+    try {
+        const pratosRef = ref(db, "pratos");
+        const docRef = await push(pratosRef, {
+            name: newPlate
+        });
+        console.log("Prato adicionado com ID:", docRef.key);
+    } catch (e) {
+        console.error("Erro ao adicionar prato:", e);
+    }
+}
+document.getElementById('adicionarPratoBtn').addEventListener('click', () => {
+    const input = document.getElementById('nomePrato');
+    const nomePrato = input.value.trim();
+
+    if (nomePrato) {
+        adicionarPrato(nomePrato); // Chama a função para adicionar o prato
+        input.value = ''; // Limpa o campo de entrada
+    } else {
+        alert('Por favor, insira o nome do prato.');
+    }
 });
 
 // Função que adiciona novos pratos

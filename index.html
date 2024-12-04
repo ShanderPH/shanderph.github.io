@@ -45,13 +45,13 @@
     <!------>
     <!------>
     <div class="title-pratos">
-        <h2>Pratos disponíveis</h2>
-        <p>Selecione o prato que você levará para a nossa ceia de natal!</p>
+        <h2>Tradicionais</h2>
+        <p>Selecione a sua receita para a nossa ceia de natal!</p>
     </div>
     <!------>
     <!------>
     <section class="pratos">
-        <span class="grid" id="cardapio">
+        <span class="grid" id="cardapioS">
             <!------>
             <div data-prato="Lagarto" class="cardapio-card">
                 <figure class="thumb">
@@ -93,34 +93,6 @@
                     <h2>Bife Bourguignon</h2>
                 </div>
             </div>
-            <!------>
-            <!------>
-            
-        </span>
-        <!--  -->
-        <!--  -->
-        <!-- Botão para Adicionar Pratos -->
-        <div class="novoPrato">
-            <input type="text" id="nomePrato" placeholder="Digite o nome do prato" />
-            <button id="adicionarPratoBtn" class="botao">Adicionar Prato</button>
-        </div>
-        <!--  -->
-        <!--  -->
-        <!--  -->
-        <div id="detalhe-receita" style="display: none;">
-            <h3 id="nome-prato"></h3>
-            <p id="descricao-receita"></p>
-            <input type="text" id="input-nome" placeholder="Digite seu nome">
-            <button id="fechar-detalhe">Fechar</button>
-        </div>
-
-    </section>
-    <div class="title-deserves">
-        <h2>Sobremesas</h2>
-    </div>
-    <section class="sobremesas">
-        <span class="grid" id="cardapioS">
-            <!------>
             <div data-prato="Pavê" class="cardapio-card">
                 <figure class="thumb">
                     <img src="https://panelaterapia.com/wp-content/uploads/2023/09/receita-pave-tradicional.jpg">
@@ -162,17 +134,41 @@
                     <h2>Manjar de Côco</h2>
                 </div>
             </div>
+            <!------>
+            <!------>
+            
+        </span>
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <div id="detalhe-receita" style="display: none;">
+            <h3 id="nome-prato"></h3>
+            <p id="descricao-receita"></p>
+            <input type="text" id="input-nome" placeholder="Digite seu nome">
+            <button id="fechar-detalhe">Fechar</button>
+        </div>
 
 
+    </section>
+    <div class="title-deserves">
+        <h2>Outros Pratos</h2>
+        <p>Ou... Insira aqui o seu prato especial aqui</p>
+    </div>
+    <section class="pratos">
+        <span class="grid" id="cardapio">
+            <!------>
             <!------>
             <!------>
             
         </span>
         <!------>
         <!------>
-        <div class="novoSobremesa">
-            <input type="text" id="deserveInput" placeholder="Digite nome da Sobremesa">
-            <button id="adicionarSobreBtn" class="botao">Adicionar Sobremesa</button>
+        <!-- Botão para Adicionar Pratos -->
+        <div class="novoPrato">
+            <input type="text" id="nomePrato" placeholder="Digite o nome do prato" />
+            <button id="adicionarPratoBtn" class="botao">Adicionar Prato</button>
         </div>
         <!------>
         <!------>
@@ -191,8 +187,7 @@
         <img src="https://i.ibb.co/xs7fkrw/MERCANTIL-CG-removebg-preview.png">
     </a>
 </footer>
-
-<script type="module" src="./scripts.js"></script>
+<script src="./scripts.js" type="module"></script>
 </body>
 </html>
 
