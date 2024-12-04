@@ -1,12 +1,13 @@
 // Importação das funções do Firebase
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { ref, push, onValue } from "firebase/database";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://firebase.google.com/docs/web/learn-more#config-object
 const firebaseConfig = {
+  // ...
+  // The value of `databaseURL` depends on the location of the database
+  databaseURL: "https://family-christmas.firebaseio.com",
   apiKey: "AIzaSyAnvSpOqkZ3hpkHzEweb5gj-fELySXvIqo",
   authDomain: "ceia-de-natal-b95c5.firebaseapp.com",
   projectId: "ceia-de-natal-b95c5",
@@ -18,7 +19,11 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+
+
+// Initialize Realtime Database and get a reference to the service
+const db = getDatabase(app);
+
 
 // Função que adiciona novos pratos
 async function adicionarPrato(newPlate) {
@@ -26,25 +31,26 @@ async function adicionarPrato(newPlate) {
 
     // Criar novo prato no banco de dados Firebase
     try {
-        const docRef = await addDoc(collection(db, "pratos"), {
+        const pratosRef = ref(db, "pratos");
+        const docRef = await push(pratosRef, {
             name: newPlate
         });
-        console.log("Prato adicionado com ID:", docRef.id);
+        console.log("Prato adicionado com ID:", docRef.key);
 
-    const novoCard = `
-                <div data-prato="personalChoice" class="cardapio-card">
-                    <figure class="thumb">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5Ne-qEvtVO9ZCPeKmXH85pBvwfwWDJRM-5g&s" alt="Opção Personalizada">
-                    </figure>
-                    <div class="inner">
-                        <h2>${newPlate}</h2>
-                    </div>
+        const novoCard = `
+            <div data-prato="personalChoice" class="cardapio-card">
+                <figure class="thumb">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5Ne-qEvtVO9ZCPeKmXH85pBvwfwWDJRM-5g&s" alt="Opção Personalizada">
+                </figure>
+                <div class="inner">
+                    <h2>${newPlate}</h2>
                 </div>
-            `;
-    container.insertAdjacentHTML('beforeend', novoCard);
-} catch (e) {
-    console.error("Erro ao adicionar prato:", e);
-}
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', novoCard);
+    } catch (e) {
+        console.error("Erro ao adicionar prato:", e);
+    }
 }
 
 document.getElementById('adicionarPratoBtn').addEventListener('click', () => {
@@ -63,20 +69,23 @@ async function carregarPratos() {
     const container = document.getElementById('cardapio');
 
     try {
-        const querySnapshot = await getDocs(collection(db, "pratos"));
-        querySnapshot.forEach((doc) => {
-            const prato = doc.data();
-            const novoCard = `
-                <div data-prato="personalChoice" class="cardapio-card">
-                    <figure class="thumb">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5Ne-qEvtVO9ZCPeKmXH85pBvwfwWDJRM-5g&s" alt="Opção Personalizada">
-                    </figure>
-                    <div class="inner">
-                        <h2>${prato.name}</h2>
+        const pratosRef = ref(db, "pratos");
+        onValue(pratosRef, (snapshot) => {
+            container.innerHTML = ""; // Limpa o container antes de recarregar
+            snapshot.forEach((childSnapshot) => {
+                const prato = childSnapshot.val();
+                const novoCard = `
+                    <div data-prato="personalChoice" class="cardapio-card">
+                        <figure class="thumb">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5Ne-qEvtVO9ZCPeKmXH85pBvwfwWDJRM-5g&s" alt="Opção Personalizada">
+                        </figure>
+                        <div class="inner">
+                            <h2>${prato.name}</h2>
+                        </div>
                     </div>
-                </div>
-            `;
-            container.insertAdjacentHTML('beforeend', novoCard);
+                `;
+                container.insertAdjacentHTML('beforeend', novoCard);
+            });
         });
     } catch (e) {
         console.error("Erro ao carregar pratos:", e);
@@ -105,59 +114,59 @@ document.addEventListener('DOMContentLoaded', () => {
 // }
 
 // Função que adiciona novas sobremesas
-function adicionarSobre(newDeserve) {
-    const container = document.getElementById('cardapioS');
+// function adicionarSobre(newDeserve) {
+//     const container = document.getElementById('cardapioS');
 
-    const novoCard = `
-                <div data-prato="personalChoiceS" class="cardapio-card">
-                    <figure class="thumb">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5Ne-qEvtVO9ZCPeKmXH85pBvwfwWDJRM-5g&s" alt="Opção Personalizada">
-                    </figure>
-                    <div class="inner">
-                        <h2>${newDeserve}</h2>
-                    </div>
-                </div>
-            `;
-    container.insertAdjacentHTML('beforeend', novoCard);
-}
+//     const novoCard = `
+//                 <div data-prato="personalChoiceS" class="cardapio-card">
+//                     <figure class="thumb">
+//                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5Ne-qEvtVO9ZCPeKmXH85pBvwfwWDJRM-5g&s" alt="Opção Personalizada">
+//                     </figure>
+//                     <div class="inner">
+//                         <h2>${newDeserve}</h2>
+//                     </div>
+//                 </div>
+//             `;
+//     container.insertAdjacentHTML('beforeend', novoCard);
+// }
 
-document.getElementById('adicionarSobreBtn').addEventListener('click', () => {
-    const inputS = document.getElementById('deserveInput');
-    const newDeserve = inputS.value.trim();
+// document.getElementById('adicionarSobreBtn').addEventListener('click', () => {
+//     const inputS = document.getElementById('deserveInput');
+//     const newDeserve = inputS.value.trim();
 
-    if (newDeserve) {
-        adicionarSobre(newDeserve);
-        inputS.value = ''; // Limpa o campo de entrada
-    } else {
-        alert('Por favor, insira o nome de uma sobremesa.');
-    }
-});
+//     if (newDeserve) {
+//         adicionarSobre(newDeserve);
+//         inputS.value = ''; // Limpa o campo de entrada
+//     } else {
+//         alert('Por favor, insira o nome de uma sobremesa.');
+//     }
+// });
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    const card = document.querySelector(".cardapio-card");
-    const detalheReceita = document.getElementById("detalhe-receita");
-    const nomePrato = document.getElementById("nome-prato");
-    const descricaoReceita = document.getElementById("descricao-receita");
-    const inputNome = document.getElementById("input-nome");
-    const fecharDetalhe = document.getElementById("fechar-detalhe");
+// document.addEventListener("DOMContentLoaded", () => {
+//     const card = document.querySelector(".cardapio-card");
+//     const detalheReceita = document.getElementById("detalhe-receita");
+//     const nomePrato = document.getElementById("nome-prato");
+//     const descricaoReceita = document.getElementById("descricao-receita");
+//     const inputNome = document.getElementById("input-nome");
+//     const fecharDetalhe = document.getElementById("fechar-detalhe");
 
-    // Receita de exemplo
-    const receitaTexto = "Esta é uma receita deliciosa de Lagarto Assado. Tempere bem e asse com amor!";
+//     // Receita de exemplo
+//     const receitaTexto = "Esta é uma receita deliciosa de Lagarto Assado. Tempere bem e asse com amor!";
 
-    // Clique no card
-    card.addEventListener("click", () => {
-        const prato = card.getAttribute("data-prato");
+//     // Clique no card
+//     card.addEventListener("click", () => {
+//         const prato = card.getAttribute("data-prato");
 
-        // Exibe o contêiner com detalhes
-        nomePrato.textContent = prato;
-        descricaoReceita.textContent = receitaTexto;
-        detalheReceita.style.display = "block";
-    });
+//         // Exibe o contêiner com detalhes
+//         nomePrato.textContent = prato;
+//         descricaoReceita.textContent = receitaTexto;
+//         detalheReceita.style.display = "block";
+//     });
 
-    // Botão de fechar
-    fecharDetalhe.addEventListener("click", () => {
-        detalheReceita.style.display = "none";
-        inputNome.value = ""; // Limpa o campo de entrada
-    });
-});
+//     // Botão de fechar
+//     fecharDetalhe.addEventListener("click", () => {
+//         detalheReceita.style.display = "none";
+//         inputNome.value = ""; // Limpa o campo de entrada
+//     });
+// });
