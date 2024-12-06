@@ -86,6 +86,7 @@ header p {
     padding-left: 3%;
     padding-right: 15px;
     width: 90vw;
+    height: auto;
 }
 
 .cardapio-card {
@@ -286,9 +287,16 @@ header p {
     }
   }
 
-  @media only screen and (max-width: 992px) {
-    .thumb {
-        height: auto;
+  @media only screen and (max-width: 420px) {
+    .thumb img {
+        height: 120px;
+        width: 100%;
+    }
+  }
+
+  @media only screen and (min-width: 425px) {
+    .thumb img {
+        height: 150px;
         width: 100%;
     }
   }
