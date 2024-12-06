@@ -43,11 +43,6 @@ header p {
     height: auto;
 }
 
-.player {
-    border-radius: 50%;
-    padding-left: 5px;
-}
-
 .logow:hover {
     background-color: #ccc;
     border-radius: 1rem;
